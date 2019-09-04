@@ -19,6 +19,11 @@ export const Sidebar = () => (
         </ul>   
         <div className="sidebar__middle">
             <span><FaChevronDown/></span>
+            <h2>Projects</h2>
         </div>
+        <ul className="sidebar__projects">
+            <li>Projects will be here!</li>
+        </ul>
+        App project component Here!
 </div>
 )
