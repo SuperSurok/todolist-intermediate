@@ -4,7 +4,7 @@ import { IndividualProject } from "./IndividualProject";
 
 export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue);
-  const { setSelectedProjects } = useSelectedProjectsValue();
+  const { setSelectedProject } = useSelectedProjectsValue();
   const { projects } = useProjectsValue();
 
   return (
@@ -21,11 +21,11 @@ export const Projects = ({ activeValue = null }) => {
         }
         onKeyDown={() => {
           setActive(project.projectId);
-          setSelectedProjects(project.projectId);
+          setSelectedProject(project.projectId);
         }}
         onClick={() => {
           setActive(project.projectId);
-          setSelectedProjects(project.projectId);
+          setSelectedProject(project.projectId);
         }}
       ><IndividualProject project={project}/></li>
   ))
