@@ -1,0 +1,50 @@
+import React, { useState } from "react";
+import { FaTrashAlt, FaMusic } from "react-icons/fa";
+import { useProjectsValue, useSelectedProjectsValue } from "../contexts";
+import { firebase } from "../firebase";
+
+export const IndividualProject = ({ project }) => {
+  const [showConfirm, setShowConfirm] = useState(false);
+  const { projects, setProjects } = useProjectsValue();
+  const { setSelectedProject } = useSelectedProjectsValue();
+
+  const deletedProject = docId => {
+    firebase
+      .firestore()
+      .collection("projects")
+      .doc(docId)
+      .delete()
+      .then(() => {
+        setProjects([...projects]);
+        setSelectedProject("INBOX");
+      });
+  };
+
+  return (
+    <div>
+      <span className="sidebar__dot">.</span>
+      <span className="sidebar__project-name">{project.name}</span>
+      <span
+        className="sidebar__project-delete"
+        data-testid="delete-project"
+        role="button"
+        onKeyDown={() => setShowConfirm(!showConfirm)}
+        onClick={() => setShowConfirm(!showConfirm)}
+      >
+        Delete Me!
+        <FaTrashAlt />
+        {showConfirm && (
+          <div className="project-delete-modal">
+            <div className="project-delete-modal__inner">
+              <p>Are you sure you want delete this project?</p>
+              <button type="button" onClick={() => deletedProject(project.docId)}>
+                Delete Project
+                <span onClick={() => setShowConfirm(!showConfirm)}>Cancel</span>
+              </button>
+            </div>
+          </div>
+        )}
+      </span>
+    </div>
+  );
+};
