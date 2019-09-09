@@ -3,7 +3,7 @@ import { useSelectedProjectsValue, useProjectsValue } from "../contexts";
 
 export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue);
-  const { selectedProjects } = useSelectedProjectsValue();
+  const { setSelectedProjects } = useSelectedProjectsValue();
   const { projects } = useProjectsValue();
 
   return (
@@ -20,13 +20,13 @@ export const Projects = ({ activeValue = null }) => {
         }
         onKeyDown={() => {
           setActive(project.projectId);
-          selectedProjects(project.projectId);
+          setSelectedProjects(project.projectId);
         }}
         onClick={() => {
           setActive(project.projectId);
-          selectedProjects(project.projectId);
+          setSelectedProjects(project.projectId);
         }}
-      >{JSON.stringify(project)}</li>
+      >{('Project', JSON.stringify(project))}</li>
   ))
   );
 };

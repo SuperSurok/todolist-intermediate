@@ -9,7 +9,6 @@ import { useSelectedProjectsValue } from "../../contexts";
 import { Projects } from "../Projects";
 
 export const Sidebar = () => {
-  console.log(<Projects/>);
   const { selectedProjects } = useSelectedProjectsValue;
   const [active, setActive] = useState("inbox");
   const [showProjects, setShowProjects] = useState(true);

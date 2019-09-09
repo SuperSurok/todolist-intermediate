@@ -57,12 +57,12 @@ export const useProjects = () => {
     firebase
       .firestore()
       .collection("projects")
-      .where("user", "==", "1")
+      .where("userId", "==", "1")
       .orderBy("projectId")
       .get()
       .then(snapshot => {
         const allProjects = snapshot.docs.map(project => ({
-          ...project.data,
+          ...project.data(),
           docId: project.id
         }));
 
