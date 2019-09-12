@@ -5,12 +5,12 @@ import {
   FaRegCalendarAlt,
   FaRegCalendar
 } from "react-icons/fa";
-import { useSelectedProjectsValue } from "../../contexts";
+import { useSelectedProjectValue } from "../../contexts";
 import { Projects } from "../Projects";
 import { AddProject } from "../AddProject";
 
 export const Sidebar = () => {
-  const { selectedProjects } = useSelectedProjectsValue;
+  const { selectedProjects } = useSelectedProjectValue;
   const [active, setActive] = useState("inbox");
   const [showProjects, setShowProjects] = useState(true);
   return (

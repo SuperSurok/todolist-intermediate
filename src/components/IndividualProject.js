@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { FaTrashAlt, FaMusic } from "react-icons/fa";
-import { useProjectsValue, useSelectedProjectsValue } from "../contexts";
+import { useProjectsValue, useSelectedProjectValue } from "../contexts";
 import { firebase } from "../firebase";
 
 export const IndividualProject = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { projects, setProjects } = useProjectsValue();
-  const { setSelectedProject } = useSelectedProjectsValue();
+  const { setSelectedProject } = useSelectedProjectValue();
 
   const deletedProject = docId => {
     firebase
@@ -23,6 +23,7 @@ export const IndividualProject = ({ project }) => {
   return (
     <>
       <span className="sidebar__dot">.</span>
+      <FaMusic/>
       <span className="sidebar__project-name">{project.name}</span>
       <span
         className="sidebar__project-delete"
